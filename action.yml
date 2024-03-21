@@ -1,0 +1,19 @@
+name: jenkins-build-info
+author: Ahton89
+description: Small action to get the image name with tag from jenkins build info.
+inputs:
+  github_token:
+      description: 'Github Token'
+      required: false
+  image_name:
+      description: 'image name from jenkins'
+      required: true
+outputs:
+  jenkins-image-name:
+    description: 'Image name with tag from jenkins build info'
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.image_name }}
+    - ${{ inputs.github_token }}
